@@ -18,14 +18,14 @@ public class LoginControl {
     public String loginPage(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout,
                             Model model) {
-        String errorMessage = null;
+        String errorMessge = null;
         if (error != null) {
-            errorMessage = "Username or Password is incorrect !!";
+            errorMessge = "Username or Password is incorrect !!";
         }
         if (logout != null) {
-            errorMessage = "You have been successfully logged out !!";
+            errorMessge = "You have been successfully logged out !!";
         }
-        model.addAttribute("errorMessage", errorMessage);
+        model.addAttribute("errorMessge", errorMessge);
         return "login";
     }
 
