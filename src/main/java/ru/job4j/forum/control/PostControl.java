@@ -6,17 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.job4j.forum.repository.PostRepository;
+import ru.job4j.forum.service.PostService;
 
 @Controller
 public class PostControl {
     @Autowired
-    private PostRepository postRepository;
+    private PostService postService;
 
     @PostMapping("/create")
     public String addPost(@RequestParam(value = "name", required = false) String name, Model model) {
-        postRepository.add(name);
-        model.addAttribute("posts", postRepository.getAll());
+        //postService.add(name);
+        model.addAttribute("posts", postService.getAll());
         return "index";
     }
 
