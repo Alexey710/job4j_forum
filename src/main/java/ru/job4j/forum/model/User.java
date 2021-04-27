@@ -54,7 +54,7 @@ public class User {
         this.authority = authority;
     }
 
-    public boolean isEnabled() {
+    public boolean getEnabled() {
         return enabled;
     }
 
@@ -77,6 +77,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", password='" + password
+                + '\'' + ", username='" + username + '\''
+                + ", authority=" + authority + ", enabled=" + enabled + '}';
     }
 
     public static void main(String[] args) {

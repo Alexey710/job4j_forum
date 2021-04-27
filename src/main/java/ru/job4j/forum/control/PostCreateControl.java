@@ -4,24 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
 
 @Controller
-public class PostControl {
+public class PostCreateControl {
     @Autowired
     private PostService postService;
 
-    @PostMapping("/create")
-    public String addPost(@RequestParam(value = "name", required = false) String name, Model model) {
-        //postService.add(name);
-        model.addAttribute("posts", postService.getAll());
-        return "index";
-    }
-
     @GetMapping("/create")
     public String getCreatePage() {
-        return "posts/create";
+        return "post/create";
+    }
+
+    @PostMapping("/create")
+    public String createPost(@ModelAttribute Post post) {
+        postService.create(post);
+        return "redirect:/";
     }
 }

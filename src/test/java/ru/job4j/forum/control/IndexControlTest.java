@@ -43,7 +43,7 @@ public class IndexControlTest {
         this.mockMvc.perform(get("/create"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("posts/create"));
+                .andExpect(view().name("post/create"));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class IndexControlTest {
         this.mockMvc.perform(get("/edit"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("posts/edit"));
+                .andExpect(view().name("post/edit"));
     }
 
     @Test

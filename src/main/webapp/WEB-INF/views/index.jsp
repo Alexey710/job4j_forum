@@ -20,7 +20,10 @@
     </div>
 
     <div>
-     <a href="<c:url value='/create'/>" style="color:green">Добавить тему</a>
+       <form action="<c:url value='/create'/>" method="get">
+           <button type="submit" style="background:green; color:white">Добавить тему</button>
+       </form>
+       <br>
     </div>
 
     <div class="row">
@@ -28,12 +31,14 @@
             <thead>
             <tr>
                 <th scope="col">Тема</th>
+                <th scope="col">Дата изменения</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${posts}" var="post">
                 <tr>
-                    <td><c:out value="${post.name}"/> <a href="<c:url value='/edit'/>" style="color:blue">обсудить</a></td>
+                    <td><c:out value="${post.name}"/> <a href="<c:url value='/edit?id=${post.id}&name=${post.name}'/>" style="color:blue">редактировать</a></td>
+                    <td><c:out value="${post.created.time}"/></td>
                 </tr>
             </c:forEach>
             </tbody>
